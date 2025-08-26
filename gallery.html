@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery | Mahalingeshwara Temple</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .section {
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-title {
+      margin: 2rem 0 1rem;
+      font-size: 1.4rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox overlay */
+    #lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      text-align: center;
+      background: #001f33;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .gallery-grid img {
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="section">
+    <h1>Temple Gallery</h1>
+
+    <!-- Temple Outskirts -->
+    <div>
+      <h2 class="gallery-title">Temple Outskirts</h2>
+      <div class="gallery-grid">
+        <img src="photos/out2.jpg" alt="Temple View 1">
+        <img src="photos/out1.jpg" alt="Temple View 2">
+        <img src="photos/blueprint.jpg" alt="Temple Blueprint">
+      </div>
+    </div>
+
+    <!-- Kola -->
+    <div>
+      <h2 class="gallery-title">Kola</h2>
+      <div class="gallery-grid">
+        <img src="photos/kola2.jpg" alt="Kola Ritual 1">
+        <img src="photos/kola.jpg" alt="Kola Ritual 2">
+        <img src="photos/daiva.jpg" alt="Kola Ritual 3">
+      </div>
+    </div>
+
+    <!-- Utsava -->
+    <div>
+      <h2 class="gallery-title">Utsava</h2>
+      <div class="gallery-grid">
+        <img src="photos/bali.jpg" alt="Utsava 1">
+        <img src="photos/bali2.jpg" alt="Utsava 2">
+        <img src="photos/bali3.jpg" alt="Utsava 3">
+        <img src="photos/bali4.jpg" alt="Utsava 4">
+        <img src="photos/bali5.jpg" alt="Utsava 5">
+      </div>
+    </div>
+
+    <!-- Ganapathi -->
+    <div>
+      <h2 class="gallery-title">Ganapathi</h2>
+      <div class="gallery-grid">
+        <img src="photos/ganpati_kavacha.jpg" alt="Ganapathi 1">
+        <img src="photos/ganapti.jpg" alt="Ganapathi 2">
+      </div>
+    </div>
+
+    <!-- Mahalingeshwara -->
+    <div>
+      <h2 class="gallery-title">Mahalingeshwara</h2>
+      <div class="gallery-grid">
+        <img src="photos/eshwara.jpg" alt="Mahalingeshwara 1">
+        <img src="photos/eshwara_kavacha.jpg" alt="Mahalingeshwara 2">
+      </div>
+    </div>
+  </main>
+
+  <!-- Lightbox container -->
+  <div id="lightbox">
+    <img src="" alt="enlarged" id="lightbox-img">
+  </div>
+
+  <footer>
+    &copy; 2025 Mahalingeshwara Temple. All rights reserved.
+  </footer>
+
+  <!-- Lightbox Script -->
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const galleryImages = document.querySelectorAll(".gallery-grid img");
+
+    galleryImages.forEach(img => {
+      img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    lightbox.addEventListener("click", () => {
+      lightbox.style.display = "none";
+      lightboxImg.src = "";
+    });
+  </script>
+
+</body>
+</html>
